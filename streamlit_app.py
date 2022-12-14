@@ -106,10 +106,3 @@ if st.button("Summarize Video"):
         # Display the summaries
         for summary in summaries:
             st.write(summary)
-This code will check whether the transcript is None, and will display a message saying "Transcript not available" if this is the case. Otherwise, it will continue with the normal summarization process.
-
-You can add this code to your script to display a message when the transcript is not available.
-
-
-
-

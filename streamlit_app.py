@@ -2,6 +2,7 @@ import streamlit as st
 from youtube_transcript_api import YouTubeTranscriptApi
 from urllib.parse import urlparse
 import openai
+import json
 
 # Create a text input field for the GPT-3 API key
 api_key_input = st.text_input("Enter GPT-3 API key:")
@@ -79,7 +80,7 @@ def gpt3_summarize(paragraph):
     )
 
     # Return the summary text
-    return summary.data   
+    return summary["choices"][0]["text"]
 
 url_input = st.text_input("Enter YouTube URL:")
 

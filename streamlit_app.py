@@ -32,36 +32,31 @@ def split_transcript(transcript):
     for line in transcript:
         transcript_text += line['text']
         
-    # Split the transcript text into sentences
-    sentences = transcript_text.split('.')
-
     # Create a list to store the paragraphs
     paragraphs = []
     
     # Initialize a temporary list to store the current paragraph
-    current_paragraph = []
+    current_paragraph = ""
     
-    # Loop through the sentences and add them to the current paragraph
-    # until the paragraph has between 800 and 1200 words
-    for sentence in sentences:
-        if len(current_paragraph) + len(sentence) >= 800 and len(current_paragraph) + len(sentence) <= 1200:
-            # Add the sentence to the current paragraph
-            current_paragraph.append(sentence)
-            
+    # Loop through the transcript text and add it to the current paragraph
+    # until the paragraph has 4000 characters or less
+    for character in transcript_text:
+        if len(current_paragraph) + len(character) >= 4000:
             # Add the current paragraph to the list of paragraphs
-            paragraphs.append(" ".join(current_paragraph))
+            paragraphs.append(current_paragraph)
             
             # Reset the current paragraph
-            current_paragraph = []
+            current_paragraph = ""
         else:
-            # Add the sentence to the current paragraph
-            current_paragraph.append(sentence)
+            # Add the character to the current paragraph
+            current_paragraph += character
             
-    # If the transcript is less than 800 words, return the whole text as a single paragraph
+    # If the transcript is less than 4000 characters, return the whole text as a single paragraph
     if len(paragraphs) == 0:
         return [transcript_text]
     else:
         return paragraphs
+
 
 
     

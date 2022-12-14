@@ -67,7 +67,7 @@ def gpt3_summarize(paragraph):
 
     # Use GPT-3 to summarize the paragraph
     summary = openai.Completion.create(
-        engine="text-davinci-003",
+        engine="text-curie-001",
         prompt=f"{paragraph_text} TL;DR:",
         max_tokens=1024,
         temperature=0.5,
@@ -106,3 +106,5 @@ if st.button("Summarize Video"):
         for summary in summaries:
             st.write(summary)
             st.write(paragraph)
+            
+            st.write(summaries)

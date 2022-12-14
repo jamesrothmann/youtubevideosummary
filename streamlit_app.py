@@ -2,7 +2,6 @@ import streamlit as st
 from youtube_transcript_api import YouTubeTranscriptApi
 from urllib.parse import urlparse
 import openai
-import json
 
 # Create a text input field for the GPT-3 API key
 api_key_input = st.text_input("Enter GPT-3 API key:")

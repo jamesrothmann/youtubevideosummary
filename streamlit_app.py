@@ -107,3 +107,4 @@ if st.button("Summarize Video"):
         # Display the summaries
         for summary in summaries:
             st.write(summary)
+            st.write(paragraphs)

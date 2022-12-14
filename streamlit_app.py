@@ -80,7 +80,7 @@ def gpt3_summarize(paragraph):
     )
 
     # Return the summary text
-    return summary["text"]
+    return summary["choices"][0]["text"]
 
 url_input = st.text_input("Enter YouTube URL:")
 

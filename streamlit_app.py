@@ -25,8 +25,11 @@ def extract_video_id(url):
         if key == 'v':
             return value
 def split_transcript(transcript):
-    # Split the transcript into sentences
-    sentences = transcript.split('.')
+    transcript_text = ""
+    for line in transcript:
+        transcript_text += line['text']
+
+    sentences = transcript_text.split('.')
     
     # Create a list to store the paragraphs
     paragraphs = []

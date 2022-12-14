@@ -41,7 +41,7 @@ def split_transcript(transcript):
     # Loop through the transcript text and add it to the current paragraph
     # until the paragraph has 4000 characters or less
     for character in transcript_text:
-        if len(current_paragraph) + len(character) >= 2000:
+        if len(current_paragraph) + len(character) >= 1000:
             # Add the current paragraph to the list of paragraphs
             paragraphs.append(current_paragraph)
             
@@ -69,7 +69,7 @@ def gpt3_summarize(paragraph):
     summary = openai.Completion.create(
         engine="text-curie-001",
         prompt=f"{paragraph_text} TL;DR:",
-        max_tokens=1024,
+        max_tokens=500,
         temperature=0.5,
         top_p=1,
         best_of=1,

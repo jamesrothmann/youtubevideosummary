@@ -24,13 +24,17 @@ def extract_video_id(url):
         key, value = query_pair.split('=')
         if key == 'v':
             return value
+        
+        
 def split_transcript(transcript):
+    # Concatenate the transcript text into a single string
     transcript_text = ""
     for line in transcript:
         transcript_text += line['text']
-
+        
+    # Split the transcript text into sentences
     sentences = transcript_text.split('.')
-    
+
     # Create a list to store the paragraphs
     paragraphs = []
     
@@ -45,7 +49,7 @@ def split_transcript(transcript):
             current_paragraph.append(sentence)
             
             # Add the current paragraph to the list of paragraphs
-            paragraphs.append(current_paragraph)
+            paragraphs.append(" ".join(current_paragraph))
             
             # Reset the current paragraph
             current_paragraph = []
@@ -55,9 +59,10 @@ def split_transcript(transcript):
             
     # If the transcript is less than 800 words, return the whole text as a single paragraph
     if len(paragraphs) == 0:
-        return [transcript]
+        return [transcript_text]
     else:
         return paragraphs
+
 
     
 

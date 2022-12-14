@@ -67,16 +67,19 @@ def split_transcript(transcript):
     
 
 def gpt3_summarize(paragraph):
+    # Concatenate the sentences in the paragraph into a single string
+    paragraph_text = " ".join(paragraph)
+
     # Use GPT-3 to summarize the paragraph
     summary = openai.Completion.create(
         engine="text-davinci-003",
-        prompt=f"TL;DR: {paragraph}",
+        prompt=f"TL;DR: {paragraph_text}",
         max_tokens=1024,
         temperature=0.5,
     )
-    
+
     # Return the summary text
-    return summary.text    
+    return summary.data   
 
 url_input = st.text_input("Enter YouTube URL:")
 

@@ -73,7 +73,7 @@ def gpt3_summarize(paragraph):
     # Use GPT-3 to summarize the paragraph
     summary = openai.Completion.create(
         engine="text-davinci-003",
-        prompt=f"{paragraph_text} TL;DR",
+        prompt=f"{paragraph_text} TL;DR:",
         max_tokens=1024,
         temperature=0.5,
         top_p=1,

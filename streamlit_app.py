@@ -90,14 +90,26 @@ if st.button("Summarize Video"):
     # Fetch the transcript using youtube-transcript-api
     transcript = YouTubeTranscriptApi.get_transcript(video_id)
     
-    # Split the transcript into paragraphs of 800-1200 words
-    paragraphs = split_transcript(transcript)
-    
-    # Use GPT-3 to summarize each paragraph
-    summaries = []
-    for paragraph in paragraphs:
-        summaries.append(gpt3_summarize(paragraph))
-        
-    # Display the summaries
-    for summary in summaries:
-        st.write(summary)
+    # Check if the transcript is None
+    if transcript is None:
+        # If the transcript is None, display a message saying that the transcript is not available
+        st.write("Transcript not available")
+    else:
+        # If the transcript is not None, split the transcript into paragraphs of 800-1200 words
+        paragraphs = split_transcript(transcript)
+
+        # Use GPT-3 to summarize each paragraph
+        summaries = []
+        for paragraph in paragraphs:
+            summaries.append(gpt3_summarize(paragraph))
+
+        # Display the summaries
+        for summary in summaries:
+            st.write(summary)
+This code will check whether the transcript is None, and will display a message saying "Transcript not available" if this is the case. Otherwise, it will continue with the normal summarization process.
+
+You can add this code to your script to display a message when the transcript is not available.
+
+
+
+

@@ -41,7 +41,7 @@ def split_transcript(transcript):
     # Loop through the transcript text and add it to the current paragraph
     # until the paragraph has 4000 characters or less
     for character in transcript_text:
-        if len(current_paragraph) + len(character) >= 4000:
+        if len(current_paragraph) + len(character) >= 2000:
             # Add the current paragraph to the list of paragraphs
             paragraphs.append(current_paragraph)
             
